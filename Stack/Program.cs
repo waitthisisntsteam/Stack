@@ -5,19 +5,7 @@ namespace Stack
 {
     class Program
     {
-        public static void Push<T>(DoublyLinkedList<T> stack, T current)
-        {
-            stack.AddNodeToLast(current);
-        }
-        public static void Pop<T>(DoublyLinkedList<T> stack)
-        {
-            stack.RemoveLast();
-        }
-        public static void Peek<T>(DoublyLinkedList<T> stack)
-        {
-            Console.WriteLine(stack.Tail.data);
-        }
-
+        
         static void Main(string[] args)
         {
             var stack = new DoublyLinkedList<int>();
@@ -29,13 +17,13 @@ namespace Stack
                 {
                     Console.WriteLine("What would you like to push?");
                     int pushAnswer = int.Parse(Console.ReadLine());
-                    Push(stack, pushAnswer);
+                    StackFunctions.Push(stack, pushAnswer);
                 }
                 else if (answer == "pop")
                 {
                     if (stack.Count > 0)
                     {
-                        Pop(stack);
+                        StackFunctions.Pop(stack);
                     }
                     else
                     {
@@ -46,7 +34,7 @@ namespace Stack
                 {
                     if (stack.Count > 0)
                     {
-                        Peek(stack);
+                        StackFunctions.Peek(stack);
                     }
                     else
                     {
@@ -61,6 +49,8 @@ namespace Stack
                 {
                     Console.WriteLine("Check spelling errors.");
                 }
+
+
             }
         }
     }
