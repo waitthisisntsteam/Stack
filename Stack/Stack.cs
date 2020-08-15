@@ -8,8 +8,8 @@ namespace Stack
     public class Stack<T>
     {
         public T[] stack = new T[0];
-        public int addAt = 0;      
-
+        int index = 0;
+        public int Count => index;
         public void Resize()
         {
             T[] temp = new T[stack.Length + 1];
@@ -21,22 +21,30 @@ namespace Stack
         }
         public void Push(T current)
         {
-            if(addAt == stack.Length)
+            if(index == stack.Length)
             {
                 Resize();
             }
-            stack[addAt] = current;
+            stack[index] = current;
             
-            addAt++;
+            index++;
         }
         public T Pop()
         {
-            addAt--;
-            return stack[addAt];
+            if (index <= 0)
+            {
+                throw new InvalidOperationException("Stack is empty.");
+            }
+            index--;
+            return stack[index];
         }
-        public void Peek()
-        { 
-            Console.WriteLine(stack[addAt-1]);
+        public T Peek()
+        {
+            if (index <= 0)
+            {
+                throw new InvalidOperationException("Stack is empty.");
+            }
+            return stack[index-1];
         }
     }
 }
