@@ -1,4 +1,7 @@
-using System;
+/*using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml.Schema;
 using Xunit;
 
 namespace Stack.Test
@@ -8,14 +11,13 @@ namespace Stack.Test
         [Fact]
         public void ListCountIsZeroWhenEmpty()
         {
-            var list = new DoublyLinkedList<int>();
-            Assert.Equal(0, list.Count);
+            int[] list = new int[5];
+            Assert.Empty(list);
         }
         [Fact]
         public void ListHeadTailAreNullWhenEmpty()
         {
-            var list = new DoublyLinkedList<int>();
-
+            int[] list = new int[5];
             Assert.Null(list.Head);
             Assert.Null(list.Tail);
         }
@@ -26,11 +28,10 @@ namespace Stack.Test
         [InlineData(5, new int[] {1, 2, 3, 4, 5})]
         public void PushTest(int expectedCount, int[] values)
         {
-            var stack = new DoublyLinkedList<int>();
-
+            int[] stack = new int[5];
             foreach (var item in values)
             {
-                StackFunctions.Push(stack, item);
+                Stack.Stack.Push(item);
             }
 
             Assert.Equal(expectedCount, stack.Count);
@@ -41,7 +42,7 @@ namespace Stack.Test
                 Assert.NotNull(stack.Head);
                 Assert.NotNull(stack.Tail);
                 Assert.Equal(values[0], stack.Head.data);
-                Assert.Equal(values[values.Length - 1], stack.Tail.data);
+                Assert.Equal(values[values.Length - 1], Stack.addAt);
             }
         }
         [Theory]
@@ -50,10 +51,10 @@ namespace Stack.Test
         [InlineData(5, new int[] {1, 2, 3, 4, 5})]
         public void PopTest(int expectedCount, int[] values)
         {
-            var stack = new DoublyLinkedList<int>();
+            int[] stack = new int[5];
             foreach (var item in values)
             {
-                StackFunctions.Push(stack, item);
+                Stack.Stack.Push(item);
             }
 
             Assert.Equal(expectedCount, stack.Count);
@@ -66,10 +67,10 @@ namespace Stack.Test
                 Assert.Equal(values[0], stack.Head.data);
                 if (values.Length > 1)
                 {
-                    StackFunctions.Pop(stack);
+                    Stack.Stack.Pop(stack);
                     Assert.Equal(values[values.Length - 2], stack.Tail.data);
                 }
             }
         }
     }
-}
+}*/

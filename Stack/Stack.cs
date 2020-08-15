@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Schema;
 
 namespace Stack
 {
     public class Stack<T>
     {
         public T[] stack = new T[0];
-        int addAt = 0;
+        public int addAt = 0;      
 
         public void Resize()
         {
@@ -20,8 +21,6 @@ namespace Stack
         }
         public void Push(T current)
         {
-            //stack.AddNodeToLast(current);
-
             if(addAt == stack.Length)
             {
                 Resize();
@@ -34,12 +33,10 @@ namespace Stack
         {
             addAt--;
             return stack[addAt];
-            //stack.RemoveLast();
         }
         public void Peek()
         { 
-                    //Console.WriteLine(stack.Tail.data);
-            Console.WriteLine(stack[stack.Length]);
+            Console.WriteLine(stack[addAt-1]);
         }
     }
 }
